@@ -32,34 +32,68 @@ function loadTiles() {
     newTile.addEventListener("click", function () {
       let index = parseInt(this.getAttribute("index"));
       let numb = parseInt(this.getAttribute("number"));
-      swap(index, numb);
+      swap(index, numb, this);
     });
 
     tileContainer.appendChild(newTile);
   }
 }
 
-function swap(index, number) {
-  if (number === 16) {
-    return;
-  }
-  if (index < 1 || index > 16) {
-    return;
-  }
+function swap(index, number, elem) {
+  if (number === 16) return;
+  if (index < 1 || index > 16) return;
+
+  emptyTile = document.getElementById(`btn${16}`);
+  const parent = elem.parentNode;
+  const elemNext = elem.nextSibling;
+  const emptyNext = emptyTile.nextSibling;
+  let x = parseInt(emptyTile.getAttribute("index"));
   //check if his moving right
-  if (clicked == positionOfWhite + 1) {
-    if (clicked % 4 != 1) {
+  if (index == positionOfWhite + 1) {
+    if (index % 4 != 1) {
+      parent.insertBefore(elem, emptyTile);
+      emptyTile.setAttribute("index", index);
+      elem.setAttribute("index", x);
+      positionOfWhite = index;
     }
     //check if his moving left
-  } else if (clicked == positionOfWhite - 1) {
-    if (clicked % 4 != 0) {
+  } else if (index == positionOfWhite - 1) {
+    if (index % 4 != 0) {
+      parent.insertBefore(emptyTile, elem);
+      emptyTile.setAttribute("index", index);
+      elem.setAttribute("index", x);
+      positionOfWhite = index;
     }
     //check if his moving up
-  } else if (clicked == positionOfWhite - 4) {
+  } else if (index == positionOfWhite - 4) {
+    const placeholder = document.createElement("button");
+    placeholder.classList.add("btn");
+    placeholder.innerHTML = 0;
+    parent.insertBefore(placeholder, elem);
+    parent.insertBefore(elem, emptyTile);
+    parent.insertBefore(emptyTile, placeholder);
+    parent.removeChild(placeholder);
+
+    elem.setAttribute("index", x);
+    emptyTile.setAttribute("index", index);
+    positionOfWhite = index;
     //check if his moving down
-  } else if (clicked == positionOfWhite + 4) {
+  } else if (index == positionOfWhite + 4) {
+    const placeholder = document.createElement("button");
+    placeholder.classList.add("btn");
+    placeholder.innerHTML = 0;
+    parent.insertBefore(placeholder, elem);
+    parent.insertBefore(elem, emptyTile);
+    parent.insertBefore(emptyTile, placeholder);
+    parent.removeChild(placeholder);
+
+    elem.setAttribute("index", x);
+    emptyTile.setAttribute("index", index);
+    positionOfWhite = index;
   }
   console.log("clicked " + number + "of index " + index);
 }
+
+
 
 loadTiles();
