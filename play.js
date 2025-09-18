@@ -1,20 +1,21 @@
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 //selected
 let positionOfWhite;
+let shuffled = false;
 
-function shuffle(array) {
-  let currentIndex = array.length;
-  while (currentIndex != 0) {
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-}
+// function shuffle(array) {
+//   let currentIndex = array.length;
+//   while (currentIndex != 0) {
+//     let randomIndex = Math.floor(Math.random() * currentIndex);
+//     currentIndex--;
+//     [array[currentIndex], array[randomIndex]] = [
+//       array[randomIndex],
+//       array[currentIndex],
+//     ];
+//   }
+// }
 
-shuffle(numbers);
+// shuffle(numbers);
 
 function loadTiles() {
   const tileContainer = document.getElementById("tiles");
@@ -36,6 +37,35 @@ function loadTiles() {
     });
 
     tileContainer.appendChild(newTile);
+  }
+}
+
+function shuffle() {
+  let minShuffles = 100;
+  let totalShuffles =
+    minShuffles + Math.floor(Math.random() * (200 - 100) + 100);
+  for (let i = minShuffles; i <= totalShuffles; i++) {
+    setTimeout(function timer() {
+      let x = Math.floor(Math.random() * 4);
+      let direction = 0;
+      if (x == 0) {
+        direction = positionOfWhite + 1;
+      } else if (x == 1) {
+        direction = positionOfWhite - 1;
+      } else if (x == 2) {
+        direction = positionOfWhite + 4;
+      } else if (x == 3) {
+        direction = positionOfWhite - 4;
+      }
+
+      let elem = document.querySelector(`[index="${direction}"]`);
+      let numb = parseInt(elem.getAttribute("number"));
+      swap(direction, numb, elem);
+      //   swap(direction);
+      if (i >= totalShuffles - 1) {
+        shuffled = true;
+      }
+    }, i * 10);
   }
 }
 
@@ -91,8 +121,9 @@ function swap(index, number, elem) {
     emptyTile.setAttribute("index", index);
     positionOfWhite = index;
   }
-  if(checkWinner()){
-    alert("win win win")
+  if (checkWinner()) {
+    alert("win win win");
+    reset();
   }
   console.log("clicked " + number + "of index " + index);
 }
@@ -109,4 +140,20 @@ function checkWinner() {
   return true;
 }
 
-loadTiles();
+function newGame() {
+  loadTiles();
+  setTimeout(() => {
+    shuffle();
+  }, 500);
+}
+
+function reset() {
+  let e = document.querySelector("button");
+  let child = e.lastElementChild;
+  while (child) {
+    e.removeChild(child);
+    child = e.lastElementChild;
+  }
+}
+
+newGame();
