@@ -3,20 +3,6 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 let positionOfWhite;
 let shuffled = false;
 
-// function shuffle(array) {
-//   let currentIndex = array.length;
-//   while (currentIndex != 0) {
-//     let randomIndex = Math.floor(Math.random() * currentIndex);
-//     currentIndex--;
-//     [array[currentIndex], array[randomIndex]] = [
-//       array[randomIndex],
-//       array[currentIndex],
-//     ];
-//   }
-// }
-
-// shuffle(numbers);
-
 function loadTiles() {
   const tileContainer = document.getElementById("tiles");
   for (let b = 0; b < numbers.length; b++) {
