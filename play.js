@@ -121,9 +121,11 @@ function swap(index, number, elem) {
     emptyTile.setAttribute("index", index);
     positionOfWhite = index;
   }
-  if (checkWinner()) {
-    alert("win win win");
-    reset();
+  if (shuffled) {
+    if (checkWinner()) {
+      alert("win win win");
+      reset();
+    }
   }
   console.log("clicked " + number + "of index " + index);
 }
@@ -148,12 +150,13 @@ function newGame() {
 }
 
 function reset() {
-  let e = document.querySelector("button");
+  let e = document.getElementById('tiles');
   let child = e.lastElementChild;
   while (child) {
     e.removeChild(child);
     child = e.lastElementChild;
   }
+  newGame()
 }
 
 newGame();
