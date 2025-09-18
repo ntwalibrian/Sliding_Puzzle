@@ -2,7 +2,6 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 //selected
 let positionOfWhite;
 let shuffled = false;
-
 function loadTiles() {
   const tileContainer = document.getElementById("tiles");
   for (let b = 0; b < numbers.length; b++) {
@@ -21,11 +20,9 @@ function loadTiles() {
       let numb = parseInt(this.getAttribute("number"));
       swap(index, numb, this);
     });
-
     tileContainer.appendChild(newTile);
   }
 }
-
 function shuffle() {
   let minShuffles = 100;
   let totalShuffles =
@@ -54,7 +51,6 @@ function shuffle() {
     }, i * 10);
   }
 }
-
 function swap(index, number, elem) {
   if (number === 16) return;
   if (index < 1 || index > 16) return;
@@ -144,5 +140,4 @@ function reset() {
   }
   newGame()
 }
-
 newGame();
