@@ -94,6 +94,16 @@ function swap(index, number, elem) {
   console.log("clicked " + number + "of index " + index);
 }
 
-
+function checkWinner() {
+  for (let i = 1; i <= 16; i++) {
+    const currentTile = document.getElementById(`btn${i}`);
+    const number = parseInt(currentTile.getAttribute("number"));
+    const index = parseInt(currentTile.getAttribute("index"));
+    if (number !== index) {
+      return false;
+    }
+  }
+  return true;
+}
 
 loadTiles();
