@@ -91,6 +91,9 @@ function swap(index, number, elem) {
     emptyTile.setAttribute("index", index);
     positionOfWhite = index;
   }
+  if(checkWinner()){
+    alert("win win win")
+  }
   console.log("clicked " + number + "of index " + index);
 }
 
