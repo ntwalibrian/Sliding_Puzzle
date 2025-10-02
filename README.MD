@@ -1,7 +1,7 @@
 Sliding Puzzle Game
 
 A simple 15-puzzle (sliding puzzle) built with HTML, CSS, and JavaScript.
-Play it online for free via GitHub Pages
+Play it online for free via GitHub Pages(https://ntwalibrian.github.io/Sliding_Puzzle/)
  🎮
 
 🚀 How to Run
