@@ -5,6 +5,7 @@ let positionOfWhite = 16;
 const board = document.getElementById("tiles");
 
 function load(n) {
+  board.innerHTML = "";
   for (let i = 1; i <= n; i++) {
     const newTile = document.createElement("button");
     newTile.id = `btn${i}`;
@@ -45,7 +46,9 @@ function shuffle() {
       swap(direction);
     }, i * 10);
   }
-  shuffled = true;
+  setTimeout(() => {
+    shuffled = true;
+  }, totalShuffles * 10 + 50);
 }
 
 function swap(index) {
@@ -83,9 +86,9 @@ function checkWin() {
 }
 
 function setWhiteTile(index) {
-  currentTile = document.getElementById(`btn${positionOfWhite}`);
-  currentTileText = currentTile.innerHTML;
-  otherTile = document.getElementById(`btn${index}`);
+  let currentTile = document.getElementById(`btn${positionOfWhite}`);
+  let currentTileText = currentTile.innerHTML;
+  let otherTile = document.getElementById(`btn${index}`);
   currentTile.innerHTML = otherTile.innerHTML;
   currentTile.classList.remove("selected");
   otherTile.classList.add("selected");
@@ -94,8 +97,8 @@ function setWhiteTile(index) {
 }
 
 function reset() {
-  shuffled = false
-  shuffle()
+  shuffled = false;
+  shuffle();
 }
 
 function newGame() {
