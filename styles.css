@@ -19,7 +19,7 @@ h1 {
 .selected {
     background-color: #FFF;
     border: none;
-    color: white;
+    color: rgb(207, 11, 11);
 }
 
 .btn {
@@ -27,4 +27,5 @@ h1 {
     height: 80px;
     width: 25%;
     cursor: pointer;
+    
 }
