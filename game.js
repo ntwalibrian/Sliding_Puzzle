@@ -75,6 +75,23 @@ function swap(index) {
   }
 }
 
+document.addEventListener("keydown", function (event) {
+  switch (event.key) {
+    case "ArrowUp":
+      swap(positionOfWhite - SIZE);
+      break;
+    case "ArrowDown":
+      swap(positionOfWhite + SIZE);
+      break;
+    case "ArrowRight":
+      swap(positionOfWhite + 1);
+      break;
+    case "ArrowLeft":
+      swap(positionOfWhite - 1);
+      break;
+  }
+});
+
 function checkWin() {
   for (let i = 1; i <= SIZE ** 2; i++) {
     let tile = document.getElementById(`btn${i}`);
