@@ -25,23 +25,25 @@ function load(n) {
 function shuffle() {
   let totalShuffles = 100 + 54 * Math.floor(Math.random() * SIZE);
   for (let i = 1; i <= totalShuffles; i++) {
-    let x = Math.floor(Math.random() * 4);
-    let direction = 0;
-    switch (x) {
-      case 0:
-        direction = positionOfWhite + 1;
-        break;
-      case 1:
-        direction = positionOfWhite - 1;
-        break;
-      case 2:
-        direction = positionOfWhite + SIZE;
-        break;
-      case 3:
-        direction = positionOfWhite - SIZE;
-        break;
-    }
-    swap(direction);
+    setTimeout(() => {
+      let x = Math.floor(Math.random() * 4);
+      let direction = 0;
+      switch (x) {
+        case 0:
+          direction = positionOfWhite + 1;
+          break;
+        case 1:
+          direction = positionOfWhite - 1;
+          break;
+        case 2:
+          direction = positionOfWhite + SIZE;
+          break;
+        case 3:
+          direction = positionOfWhite - SIZE;
+          break;
+      }
+      swap(direction);
+    }, i * 10);
   }
   shuffled = true;
 }
@@ -92,13 +94,8 @@ function setWhiteTile(index) {
 }
 
 function reset() {
-  let e = document.getElementById("tiles");
-  let child = e.lastElementChild;
-  while (child) {
-    e.removeChild(child);
-    child = e.lastElementChild;
-  }
-  newGame();
+  shuffled = false
+  shuffle()
 }
 
 function newGame() {
@@ -108,4 +105,4 @@ function newGame() {
   }, 400);
 }
 
-newGame()
+newGame();
