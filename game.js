@@ -42,8 +42,8 @@ function shuffle() {
         break;
     }
     swap(direction);
-    shuffled = true;
   }
+  shuffled = true;
 }
 
 function swap(index) {
