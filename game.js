@@ -3,9 +3,13 @@ const SIZE = 4;
 let positionOfWhite = 16;
 
 const board = document.getElementById("tiles");
+const counter = document.getElementById("counter");
+let count = 0;
 
 function load(n) {
   board.innerHTML = "";
+  count = 0;
+  counter.innerHTML = count;
   for (let i = 1; i <= n; i++) {
     const newTile = document.createElement("button");
     newTile.id = `btn${i}`;
@@ -57,16 +61,21 @@ function swap(index) {
   if (index == positionOfWhite + 1) {
     if (index % SIZE != 1) {
       setWhiteTile(index);
+      if (shuffled) count++;
     }
   } else if (index == positionOfWhite - 1) {
     if (index % SIZE != 0) {
       setWhiteTile(index);
+      if (shuffled) count++;
     }
   } else if (index == positionOfWhite - SIZE) {
     setWhiteTile(index);
+    if (shuffled) count++;
   } else if (index == positionOfWhite + SIZE) {
     setWhiteTile(index);
+    if (shuffled) count++;
   }
+  counter.innerHTML = count;
   if (shuffled) {
     if (checkWin()) {
       alert("win win win");
@@ -93,9 +102,11 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.getElementById("shuffle").addEventListener("click", function () {
+  count = 0;
+  counter.innerHTML = count;
   shuffled = false;
   shuffle();
-})
+});
 
 function checkWin() {
   for (let i = 1; i <= SIZE ** 2; i++) {
@@ -119,6 +130,8 @@ function setWhiteTile(index) {
 }
 
 function reset() {
+  count = 0;
+  counter.innerHTML = count;
   shuffled = false;
   shuffle();
 }

@@ -53,6 +53,39 @@ h1 {
   font-family: sans-serif;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
+  margin-right: 10px;
+}
+
+#tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #111827; /* dark background */
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-right: 5px;
+}
+
+#counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #cfc312; /* dark background */
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-right: 5px;
 }
 
 #shuffle:hover {
