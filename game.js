@@ -92,6 +92,11 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+document.getElementById("shuffle").addEventListener("click", function () {
+  shuffled = false;
+  shuffle();
+})
+
 function checkWin() {
   for (let i = 1; i <= SIZE ** 2; i++) {
     let tile = document.getElementById(`btn${i}`);

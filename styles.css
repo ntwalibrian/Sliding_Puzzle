@@ -1,31 +1,65 @@
 html {
-     background: radial-gradient(circle, #FF8961, #FFFB89, #74BDCB, #0E42C4) fixed;
+  background: radial-gradient(circle, #ff8961, #fffb89, #74bdcb, #0e42c4) fixed;
 }
 
 h1 {
-    text-align: center;
-    font-size: 4rem;
+  text-align: center;
+  font-size: 4rem;
 }
 
 #tiles {
-    width: 400px;
-    margin: 0 auto;
-    position: relative;
-    background-color: rgb(150, 60, 60);
-    padding: 8px;
-    border-radius: 0.5rem;
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgb(150, 60, 60);
+  padding: 8px;
+  border-radius: 0.5rem;
+}
+#buttons {
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  padding: 8px;
+  border-radius: 0.5rem;
+  display: flex;
+
+  margin-bottom: 4px;
 }
 
 .selected {
-    background-color: #FFF;
-    border: none;
-    color: white;
+  background-color: #fff;
+  border: none;
+  color: white;
 }
 
 .btn {
-    font-size: 24px;
-    height: 80px;
-    width: 25%;
-    cursor: pointer;
-    
+  font-size: 24px;
+  height: 80px;
+  width: 25%;
+  cursor: pointer;
+}
+
+#shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #111827; /* dark background */
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#shuffle:hover {
+  background: #2563eb; /* blue on hover */
+  transform: translateY(-2px);
+}
+
+#shuffle:active {
+  transform: translateY(0);
 }
