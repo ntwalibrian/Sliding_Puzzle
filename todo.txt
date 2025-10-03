@@ -1,3 +1,5 @@
-shuffle button
-move counter
+shuffle button/
+move counter/
 time counter
+add best score keeper
+do for 5x5, 6x6
